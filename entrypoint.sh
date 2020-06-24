@@ -25,6 +25,7 @@ fi
 
 # 3. Compares paths from latest HEAD with previous one. 
 # --quiet: exits with 1 if there were differences (https://git-scm.com/docs/git-diff)
+set -o noglob
 if git diff --quiet HEAD~1 HEAD -- $PATHS_TO_SEARCH; then
     echo "Code in the following paths hasn't changed: " $PATHS_TO_SEARCH
     echo ::set-output name=changed::false
